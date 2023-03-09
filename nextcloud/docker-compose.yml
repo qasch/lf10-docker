@@ -1,0 +1,26 @@
+version: '2'
+
+volumes:
+  - nextcloud-data
+  - db
+
+services:
+
+  nextcloud:
+    image: nextcloud:fpm
+    volume:
+      - ./nextcloud-data:/var/www/html
+
+  db:
+    image: mariadb:10.5
+    volume:
+      - ./db:/var/lib/mysql
+
+  webserver:
+    image: nginx
+    ports:
+      - 8888:80
+    volume:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+
+
