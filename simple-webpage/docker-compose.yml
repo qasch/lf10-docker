@@ -5,6 +5,9 @@ services:
     image: ubuntu/apache2:2.4-22.04_beta
     ports:
       - 8080:80
+    # Named Volume
+    # Daten aus dem Verzeichnis /var/www/html im Container
+    # werden mit dem Verzeichnis data auf dem Hostsystem verbunden
     volumes:
       - ./data:/var/www/html
 
